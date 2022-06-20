@@ -16,30 +16,30 @@ class CalenderFunctionalityTest extends TestCase
         $response->assertStatus(200);
     }
 
-   /* public function test_holidays_can_obtain_using_group_by_filter()
-    {
-        $params = '?' . http_build_query(['groupBy' => 'month']);
+    /* public function test_holidays_can_obtain_using_group_by_filter()
+     {
+         $params = '?' . http_build_query(['groupBy' => 'month']);
 
-        $response = $this->getJson(route('calender.retrieveRegionHolidays').$params);
+         $response = $this->getJson(route('calender.retrieveRegionHolidays').$params);
 
-        $response->assertStatus(200);
-    }
+         $response->assertStatus(200);
+     }
 
-    public function test_holidays_can_obtain_by_sorted()
-    {
-        $params = '?' . http_build_query(['sort' => 'true']);
+     public function test_holidays_can_obtain_by_sorted()
+     {
+         $params = '?' . http_build_query(['sort' => 'true']);
 
-        $response = $this->getJson(route('calender.retrieveRegionHolidays').$params);
+         $response = $this->getJson(route('calender.retrieveRegionHolidays').$params);
 
-        $response->assertStatus(200);
-    }
+         $response->assertStatus(200);
+     }
 
-    public function test_holidays_can_obtain_by_year()
-    {
-        $params = '?' . http_build_query(['year' => now()->year]);
+     public function test_holidays_can_obtain_by_year()
+     {
+         $params = '?' . http_build_query(['year' => now()->year]);
 
-        $response = $this->getJson(route('calender.retrieveRegionHolidays').$params);
+         $response = $this->getJson(route('calender.retrieveRegionHolidays').$params);
 
-        $response->assertStatus(200);
-    }*/
+         $response->assertStatus(200);
+     }*/
 }
