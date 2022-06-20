@@ -11,12 +11,12 @@ class CalenderFunctionalityTest extends TestCase
         echo 'apikey'. env('GOOGLE_API_KEY');
         $response = $this->getJson(route('calender.retrieveRegionHolidays'));
 
-        echo $response->getContent();
-        echo 'route' . route('calender.retrieveRegionHolidays');
+        echo  'response...................................' . $response->getContent();
+        echo 'route.............................' . route('calender.retrieveRegionHolidays');
         $response->assertStatus(200);
     }
 
-    public function test_holidays_can_obtain_using_group_by_filter()
+   /* public function test_holidays_can_obtain_using_group_by_filter()
     {
         $params = '?' . http_build_query(['groupBy' => 'month']);
 
@@ -41,5 +41,5 @@ class CalenderFunctionalityTest extends TestCase
         $response = $this->getJson(route('calender.retrieveRegionHolidays').$params);
 
         $response->assertStatus(200);
-    }
+    }*/
 }
