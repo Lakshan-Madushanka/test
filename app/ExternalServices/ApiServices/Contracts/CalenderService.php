@@ -20,6 +20,4 @@ interface CalenderService
     public function group(Collection $data, string $type): Collection;
 
     public function prepareErrorObject(Collection $errorInfo): Collection;
-
 }
-
