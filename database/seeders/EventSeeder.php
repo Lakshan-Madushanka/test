@@ -18,7 +18,7 @@ class EventSeeder extends Seeder
     public function run()
     {
         Event::factory()
-            ->count(150)
+            ->count(15000)
             ->create()
             ->each(function (Event $event) {
                 $event->code = 'Event_#'.$event->id;

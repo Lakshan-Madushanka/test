@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -30,7 +31,7 @@ trait ApiResponser
             $message = $this->successMsg;
         }
 
-        if ($data instanceof Collection && ! $data->isEmpty()) {
+        if ($data instanceof EloquentCollection && ! $data->isEmpty()) {
             $data = $this->transformer($data);
         }
 
