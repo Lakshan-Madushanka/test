@@ -15,7 +15,7 @@ class CalenderFunctionalityTest extends TestCase
 
     public function test_holidays_can_obtain_using_group_by_filter()
     {
-        $params = '?' + http_build_query(['groupBy' => 'month']);
+        $params = '?' . http_build_query(['groupBy' => 'month']);
 
         $response = $this->getJson(route('calender.retrieveRegionHolidays'.$params));
 
@@ -24,7 +24,7 @@ class CalenderFunctionalityTest extends TestCase
 
     public function test_holidays_can_obtain_by_sorted()
     {
-        $params = '?' + http_build_query(['sort' => 'true']);
+        $params = '?' . http_build_query(['sort' => 'true']);
 
         $response = $this->getJson(route('calender.retrieveRegionHolidays'.$params));
 
@@ -33,7 +33,7 @@ class CalenderFunctionalityTest extends TestCase
 
     public function test_holidays_can_obtain_by_year()
     {
-        $params = '?' + http_build_query(['year' => now()->year]);
+        $params = '?' . http_build_query(['year' => now()->year]);
 
         $response = $this->getJson(route('calender.retrieveRegionHolidays'.$params));
 
