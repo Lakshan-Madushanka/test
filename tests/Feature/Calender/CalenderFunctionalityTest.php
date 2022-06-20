@@ -8,7 +8,7 @@ class CalenderFunctionalityTest extends TestCase
 {
     public function test_holidays_can_obtain()
     {
-        echo 'apikey'. env(GOOGLE_API_KEY);
+        echo 'apikey'. env('GOOGLE_API_KEY');
         $response = $this->getJson(route('calender.retrieveRegionHolidays'));
 
         $response->assertStatus(200);
