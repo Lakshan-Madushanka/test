@@ -17,7 +17,7 @@ class CalenderFunctionalityTest extends TestCase
     {
         $params = '?' . http_build_query(['groupBy' => 'month']);
 
-        $response = $this->getJson(route('calender.retrieveRegionHolidays'.$params));
+        $response = $this->getJson(route('calender.retrieveRegionHolidays').$params);
 
         $response->assertStatus(200);
     }
@@ -26,7 +26,7 @@ class CalenderFunctionalityTest extends TestCase
     {
         $params = '?' . http_build_query(['sort' => 'true']);
 
-        $response = $this->getJson(route('calender.retrieveRegionHolidays'.$params));
+        $response = $this->getJson(route('calender.retrieveRegionHolidays').$params);
 
         $response->assertStatus(200);
     }
@@ -35,7 +35,7 @@ class CalenderFunctionalityTest extends TestCase
     {
         $params = '?' . http_build_query(['year' => now()->year]);
 
-        $response = $this->getJson(route('calender.retrieveRegionHolidays'.$params));
+        $response = $this->getJson(route('calender.retrieveRegionHolidays').$params);
 
         $response->assertStatus(200);
     }
