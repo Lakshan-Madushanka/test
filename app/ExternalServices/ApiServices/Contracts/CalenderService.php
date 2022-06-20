@@ -22,3 +22,4 @@ interface CalenderService
     public function prepareErrorObject(Collection $errorInfo): Collection;
 
 }
+
