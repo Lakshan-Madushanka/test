@@ -32,6 +32,7 @@ jobs:
       - name: Setup project for testing
         run: |
           cp .env.testing.docker .env.testing
+          echo GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY }} >> .env.testing
           cat .env.testing
           
       - name: Run tests
