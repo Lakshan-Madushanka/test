@@ -1,3 +1,13 @@
+# Changelog
+
+All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
+
+## What's Changed in 1.0.0
+* Init by @Lakshan-Madushanka
+
+## New Contributors
+* @Lakshan-Madushanka made their first contribution
+
 ## What's Changed in 1.0.15
 * clear cache by @Lakshan-Madushanka
 * commit by @Lakshan-Madushanka
