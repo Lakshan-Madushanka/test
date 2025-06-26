@@ -20,11 +20,21 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Update CHANGELOG
+      - name: Get release notes
+        id: notes
+        run: |
+          NOTES=$(gh release view ${{ inputs.version }} --json body -q .body)
+          echo "RELEASE_NOTES<<EOF" >> $GITHUB_OUTPUT
+          echo "$NOTES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update CHANGELOG.md
         uses: stefanzweifel/changelog-updater-action@v1
         with:
           latest-version: ${{ inputs.version }}
-          release-notes: ${{ github.event.release.body }}
+          release-notes: ${{ steps.notes.outputs.RELEASE_NOTES }}
           
       - name: Commit updated CHANGELOG
         uses: stefanzweifel/git-auto-commit-action@v5
