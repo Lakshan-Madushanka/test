@@ -1,22 +1,25 @@
-name: Release a new version and update changelog
+name: Release and Update Changelog
 
 on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version to release'
+        description: 'Version to release (e.g. v1.2.3)'
         required: true
 
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      release_notes: ${{ steps.notes.outputs.RELEASE_NOTES }}
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Create Release
-        run: gh release create ${{ inputs.version }} --generate-notes
+      - name: Create Release with generated notes
+        run: |
+          gh release create ${{ inputs.version }} --generate-notes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -30,12 +33,22 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  update-changelog:
+    name: Update Changelog
+    runs-on: ubuntu-latest
+    needs: release
+    if: success()  # Ensures it runs only if 'release' job succeeds
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Update CHANGELOG.md
         uses: stefanzweifel/changelog-updater-action@v1
         with:
           latest-version: ${{ inputs.version }}
-          release-notes: ${{ steps.notes.outputs.RELEASE_NOTES }}
-          
+          release-notes: ${{ needs.release.outputs.release_notes }}
+
       - name: Commit updated CHANGELOG
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
